@@ -13,6 +13,25 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.active {
+  background-color: #262628;
+  box-shadow: 0px 0px 0px 1px #2f2f30;
+  border-radius: 0.5rem;
+  color: white !important;
+}
+
+.activeClassName {
+  transition: all 0.5s ease-in-out;
+  color: #979797 !important;
+}
+
+.activeClassName:hover {
+  color: white !important;
+  background-color: #262628;
+  box-shadow: 0px 0px 0px 1px #2f2f30;
+  border-radius: 0.5rem;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
