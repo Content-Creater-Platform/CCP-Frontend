@@ -1,9 +1,15 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
+  font-family: "Kanit", sans-serif;
 }
 
 body {
   background: #1c1c1e !important;
   color: #fff !important;
+  font-family: "Kanit", sans-serif;
+}
+
+.font {
+  font-family: "Kanit", sans-serif;
 }
