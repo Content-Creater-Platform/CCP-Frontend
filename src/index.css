@@ -1,5 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Kanit", sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -13,16 +15,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.activeClassName {
+  transition: all 0.5s ease-in-out;
+  color: #979797 !important;
+}
+
 .active {
   background-color: #262628;
   box-shadow: 0px 0px 0px 1px #2f2f30;
   border-radius: 0.5rem;
   color: white !important;
-}
-
-.activeClassName {
-  transition: all 0.5s ease-in-out;
-  color: #979797 !important;
 }
 
 .activeClassName:hover {

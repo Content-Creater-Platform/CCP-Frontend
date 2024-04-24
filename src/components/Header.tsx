@@ -9,7 +9,7 @@ export default function Header() {
       justify={"space-between"}
       w={"100%"}
     >
-      <div>Meta NFT</div>
+      <div>LOGO</div>
       <w3m-button />
     </Flex>
   );
