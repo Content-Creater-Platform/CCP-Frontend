@@ -12,7 +12,7 @@ import { FaImage, FaMusic } from "react-icons/fa6";
 import { FaPhotoVideo } from "react-icons/fa";
 
 const CreateInput = () => {
-  const [text, setText] = useState(true);
+  const [text, setText] = useState(false);
   const [image, setImage] = useState(false);
   const [video, setVideo] = useState(false);
   const [audio, setAudio] = useState(false);
@@ -41,7 +41,7 @@ const CreateInput = () => {
     setVideo(false);
   };
   return (
-    <Box>
+    <Box mb={"3rem"}>
       <Text fontSize={"2rem"} fontWeight={"600"} mb={"1rem"}>
         What will create today, Username?
       </Text>
