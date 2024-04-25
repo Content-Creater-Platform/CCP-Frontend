@@ -21,6 +21,7 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { FaImage } from "react-icons/fa6";
 import "../../App.css";
+import ConnectButton from "../../components/ConnectButton.tsx";
 
 const DashboardLayout = (props: any) => {
   const OverlayOne = () => (
@@ -51,7 +52,7 @@ const DashboardLayout = (props: any) => {
           justifyContent={"space-between"}
         >
           <Text>LOGO</Text>
-          <w3m-button size="sm" />
+          <ConnectButton />
         </Box>
 
         <Flex flexDirection={"column"} justify={"space-between"} h={"84%"}>
