@@ -8,7 +8,7 @@ export default function ConnectButton() {
   return (
     <>
       {isConnected ? (
-        <w3m-button />
+        <w3m-button size="sm" />
       ) : (
         <Button
           bgGradient="linear(to-r, #04A67D, #24B1B6)"
