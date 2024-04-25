@@ -1,4 +1,5 @@
 import { Flex } from "@chakra-ui/react";
+import ConnectButton from "./ConnectButton";
 
 export default function Header() {
   return (
@@ -10,7 +11,7 @@ export default function Header() {
       w={"100%"}
     >
       <div>LOGO</div>
-      <w3m-button />
+      <ConnectButton />
     </Flex>
   );
 }
