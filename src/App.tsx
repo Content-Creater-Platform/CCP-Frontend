@@ -21,7 +21,6 @@ function App() {
           <Route path="feed" element={<Feed />} />
           <Route path="analytics" element={<Analytics />} />
           <Route path="monetization" element={<Monetization />} />
-          <Route path="profile" element={<Profile />} />
         </Routes>
         <Routes>
           <Route path="overview" element={<Overview />} />

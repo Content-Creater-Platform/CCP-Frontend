@@ -46,7 +46,7 @@ const DashboardLayout = (props: any) => {
         overflowX={"hidden"}
       >
         <Box
-          mb={"3rem"}
+          mb={"5rem"}
           display={"flex"}
           alignItems={"center"}
           justifyContent={"space-between"}
@@ -55,7 +55,7 @@ const DashboardLayout = (props: any) => {
           <ConnectButton />
         </Box>
 
-        <Flex flexDirection={"column"} justify={"space-between"} h={"84%"}>
+        <Flex flexDirection={"column"} justify={"space-between"} h={"77%"}>
           <Flex flexDirection={"column"} gap={"1rem"}>
             {menu.map((item, index) => (
               <NavLink to={item.link} key={index} className="activeClassName">
