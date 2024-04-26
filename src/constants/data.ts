@@ -19,3 +19,26 @@ export const menu = [
     icon: FaMoneyBillTrendUp,
   },
 ];
+
+export const menuDAO = [
+  {
+    link: "/overview",
+    title: "Overview",
+    icon: MdFeed,
+  },
+  {
+    link: "/proposals",
+    title: "Proposals",
+    icon: SiGoogleanalytics,
+  },
+  {
+    link: "/treasury",
+    title: "Treasury",
+    icon: FaMoneyBillTrendUp,
+  },
+  {
+    link: "/voting",
+    title: "Voting",
+    icon: CgProfile,
+  },
+];
