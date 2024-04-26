@@ -4,7 +4,6 @@ import "./App.css";
 import Feed from "./pages/dashboard/feed";
 import Monetization from "./pages/dashboard/monetization";
 import Analytics from "./pages/dashboard/analytics";
-import Profile from "./pages/dashboard/profile";
 import Overview from "./pages/DAOdashboard/Overview";
 import Proposals from "./pages/DAOdashboard/Proposals";
 import Voting from "./pages/DAOdashboard/Voting";

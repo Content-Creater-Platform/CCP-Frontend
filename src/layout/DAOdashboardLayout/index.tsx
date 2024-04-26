@@ -55,7 +55,7 @@ const DAOdashboardLayout = (props: any) => {
           <ConnectButton />
         </Box>
 
-        <Flex flexDirection={"column"} justify={"space-between"} h={"84%"}>
+        <Flex flexDirection={"column"} justify={"space-between"} h={"83%"}>
           <Flex flexDirection={"column"} gap={"1rem"}>
             {menuDAO.map((item, index) => (
               <NavLink to={item.link} key={index} className="activeClassName">
