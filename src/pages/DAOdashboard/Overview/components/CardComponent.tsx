@@ -4,7 +4,9 @@ import {
   Heading,
   Card,
   CardBody,
+  Text,
 } from "@chakra-ui/react";
+import "../../../../App.css";
 
 const CardComponent = () => {
   return (
@@ -15,69 +17,77 @@ const CardComponent = () => {
       <Card
         bgGradient="linear(to-r, #1d1d1e, #1d1d1f)"
         color="#fff"
-        border={"2px"}
+        border={"1px"}
         boxShadow="lg"
         borderColor="#04A67D"
         transition={"all .5s ease-in-out"}
       >
         <CardHeader>
-          <Heading size="md">Total Proposals Created</Heading>
+          <Text className="font" fontWeight={"600"} fontSize={"1.3rem"}>
+            Total Proposals Created
+          </Text>
         </CardHeader>
         <CardBody>
-          <Heading as="h2" size="xl">
+          <Text className="font" fontWeight={"600"} fontSize={"1.5rem"}>
             65
-          </Heading>
+          </Text>
         </CardBody>
       </Card>
       <Card
         bgGradient="linear(to-r, #1d1d1e, #1d1d1f)"
         color="#fff"
-        border={"2px"}
+        border={"1px"}
         boxShadow="lg"
         borderColor="#04A67D"
         transition={"all .5s ease-in-out"}
       >
         <CardHeader>
-          <Heading size="md">Approved Proposals</Heading>
+          <Text className="font" fontWeight={"600"} fontSize={"1.3rem"}>
+            Approved Proposals
+          </Text>
         </CardHeader>
         <CardBody>
-          <Heading as="h2" size="xl">
+          <Text className="font" fontWeight={"600"} fontSize={"1.5rem"}>
             65
-          </Heading>
+          </Text>
         </CardBody>
       </Card>
       <Card
         bgGradient="linear(to-r, #1d1d1e, #1d1d1f)"
         color="#fff"
-        border={"2px"}
+        border={"1px"}
         boxShadow="lg"
         borderColor="#04A67D"
         transition={"all .5s ease-in-out"}
       >
         <CardHeader>
-          <Heading size="md">Rejected Proposals</Heading>
+          <Text className="font" fontWeight={"600"} fontSize={"1.3rem"}>
+            Rejected Proposals
+          </Text>
         </CardHeader>
         <CardBody>
-          <Heading as="h2" size="xl">
+          <Text className="font" fontWeight={"600"} fontSize={"1.5rem"}>
             5
-          </Heading>
+          </Text>
         </CardBody>
       </Card>{" "}
       <Card
         bgGradient="linear(to-r, #1d1d1e, #1d1d1f)"
         color="#fff"
-        border={"2px"}
+        border={"1px"}
         boxShadow="lg"
         borderColor="#04A67D"
         transition={"all .5s ease-in-out"}
       >
         <CardHeader>
-          <Heading size="md">My Proposals</Heading>
+          <Text className="font" fontWeight={"600"} fontSize={"1.3rem"}>
+            My Proposals
+          </Text>
         </CardHeader>
         <CardBody>
-          <Heading as="h2" size="xl">
+          <Text className="font" fontWeight={"600"} fontSize={"1.5rem"}>
             2
-          </Heading>
+          </Text>
         </CardBody>
       </Card>
     </SimpleGrid>

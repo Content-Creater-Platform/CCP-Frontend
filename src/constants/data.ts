@@ -1,6 +1,7 @@
 import { MdFeed } from "react-icons/md";
 import { SiGoogleanalytics } from "react-icons/si";
 import { FaMoneyBillTrendUp } from "react-icons/fa6";
+import { CgProfile } from "react-icons/cg";
 
 export const menu = [
   {
