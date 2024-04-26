@@ -1,11 +1,4 @@
-import {
-  SimpleGrid,
-  CardHeader,
-  Heading,
-  Card,
-  CardBody,
-  Text,
-} from "@chakra-ui/react";
+import { SimpleGrid, CardHeader, Card, CardBody, Text } from "@chakra-ui/react";
 import "../../../../App.css";
 
 const CardComponent = () => {

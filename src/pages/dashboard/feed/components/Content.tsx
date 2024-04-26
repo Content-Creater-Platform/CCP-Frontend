@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Grid, GridItem, Img, Text } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, Img, Text } from "@chakra-ui/react";
 
 const Content = () => {
   return (
