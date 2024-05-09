@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Table,
   Thead,
@@ -32,52 +32,33 @@ import { LuThumbsUp, LuThumbsDown } from "react-icons/lu";
 import useContentDAO from "../../../../hooks/useDAO";
 
 const PTable: React.FC = () => {
-  const { createProposal } = useContentDAO();
-
-  // State for dialog
+  const { createProposal, fetchProposals } = useContentDAO();
+  const [proposals, setProposals] = useState([]);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  // Ref for cancel button
   const cancelRef = useRef<HTMLButtonElement>(null);
-
-  // State for form data
   const [formData, setFormData] = useState({
     name: "",
     description: "",
     duration: "",
   });
 
-  let proposalData = [
-    {
-      proposal: "Market Place ",
-      status: "Ongoing button",
-      timeLeft: "25hrs 15mins",
-      totalVotes: "1000",
-      votesFor: "925",
-      votesAgainst: "25",
-      vote: "Thumbs up or down click",
-    },
-  ];
+  useEffect(() => {
+    fetchProposals().then(setProposals);
+  }, [fetchProposals]);
 
-  // Function to handle form input change
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // Function to handle dialog close
   const handleCloseDialog = (): void => {
     setIsDialogOpen(false);
   };
 
-  // Function to handle form submit
   const handleSubmit = (): void => {
     const durationNumber: number = parseInt(formData.duration);
-    // Call your DAO function to create proposal
     createProposal(formData.name, formData.description, durationNumber);
-    // Close dialog
     setIsDialogOpen(false);
-    // Clear form data
     setFormData({ name: "", description: "", duration: "" });
   };
 
@@ -92,23 +73,18 @@ const PTable: React.FC = () => {
         Create Proposal
       </Button>
 
-      {/* Dialog for creating proposal */}
       <AlertDialog
         isOpen={isDialogOpen}
         onClose={handleCloseDialog}
         leastDestructiveRef={cancelRef}
-        size="lg" // optional: specify the size of the dialog
+        size="lg"
       >
         <AlertDialogOverlay />
-        <AlertDialogContent
-          bg="gray.800" // set background color to match dark mode theme
-          color="white" // set text color to match dark mode theme
-        >
+        <AlertDialogContent bg="gray.800" color="white">
           <AlertDialogHeader fontSize="lg" fontWeight="bold">
             Create Proposal
           </AlertDialogHeader>
           <AlertDialogBody>
-            {/* Form for creating proposal */}
             <FormControl>
               <FormLabel>Name</FormLabel>
               <Input
@@ -116,8 +92,8 @@ const PTable: React.FC = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                bg="gray.700" // set background color to match dark mode theme
-                color="white" // set text color to match dark mode theme
+                bg="gray.700"
+                color="white"
               />
             </FormControl>
             <FormControl mt={4}>
@@ -127,8 +103,8 @@ const PTable: React.FC = () => {
                 name="description"
                 value={formData.description}
                 onChange={handleInputChange}
-                bg="gray.700" // set background color to match dark mode theme
-                color="white" // set text color to match dark mode theme
+                bg="gray.700"
+                color="white"
               />
             </FormControl>
             <FormControl mt={4}>
@@ -138,8 +114,8 @@ const PTable: React.FC = () => {
                 name="duration"
                 value={formData.duration}
                 onChange={handleInputChange}
-                bg="gray.700" // set background color to match dark mode theme
-                color="white" // set text color to match dark mode theme
+                bg="gray.700"
+                color="white"
               />
             </FormControl>
           </AlertDialogBody>
@@ -151,7 +127,7 @@ const PTable: React.FC = () => {
               colorScheme="blue"
               onClick={handleSubmit}
               ml={3}
-              bg="blue.600" // set background color to match dark mode theme
+              bg="blue.600"
             >
               Create
             </Button>
@@ -166,10 +142,10 @@ const PTable: React.FC = () => {
       >
         <Card>
           <CardHeader>
-            <Heading size="md"> Total Proposals Created</Heading>
+            <Heading size="md">Total Proposals Created</Heading>
           </CardHeader>
           <CardBody>
-            <Text>Fetch </Text>
+            <Text>Fetch</Text>
           </CardBody>
           <CardFooter>
             <Button>View here</Button>
@@ -177,7 +153,7 @@ const PTable: React.FC = () => {
         </Card>
         <Card>
           <CardHeader>
-            <Heading size="md"> Approved Proposals</Heading>
+            <Heading size="md">Approved Proposals</Heading>
           </CardHeader>
           <CardBody>
             <Text>Fetch number</Text>
@@ -188,7 +164,7 @@ const PTable: React.FC = () => {
         </Card>
         <Card>
           <CardHeader>
-            <Heading size="md"> Rejected Proposals</Heading>
+            <Heading size="md">Rejected Proposals</Heading>
           </CardHeader>
           <CardBody>
             <Text>Fetch number</Text>
@@ -212,7 +188,6 @@ const PTable: React.FC = () => {
 
       <TableContainer>
         <Table variant="striped" colorScheme="">
-          {/* <TableCaption>Imperial to metric conversion factors</TableCaption> */}
           <Thead>
             <Tr>
               <Th>Proposal</Th>
@@ -225,34 +200,25 @@ const PTable: React.FC = () => {
             </Tr>
           </Thead>
           <Tbody>
-            {proposalData.map((item, index) => (
-              <Tr key={index}>
-                <Td>
-                  {item.proposal}
-                  <GoArrowUpRight />
-                </Td>
-                <Td>
-                  {item.status === "Ongoing" ? (
-                    <Button color="primary">Ongoing</Button>
-                  ) : (
-                    <Button color="secondary">Completed</Button>
-                  )}
-                </Td>
-                <Td isNumeric>{item.timeLeft}</Td>
-                <Td isNumeric>{item.totalVotes}</Td>
-                <Td isNumeric>{item.votesFor}</Td>
-                <Td isNumeric>{item.votesAgainst}</Td>
+            {proposals.map((proposal) => (
+              <Tr key={proposal.id}>
+                <Td>{proposal.name}</Td>
+                <Td>{proposal.status}</Td>
+                <Td isNumeric>{proposal.timeLeft}</Td>
+                <Td isNumeric>{proposal.totalVotes}</Td>
+                <Td isNumeric>{proposal.votesFor}</Td>
+                <Td isNumeric>{proposal.votesAgainst}</Td>
                 <Td isNumeric>
                   <HStack spacing={2}>
                     <LuThumbsUp
                       style={{ marginRight: "10px" }}
                       onClick={() => {
-                        /* Increase votes for */
+                        // Handle vote for
                       }}
                     />
                     <LuThumbsDown
                       onClick={() => {
-                        /* Increase votes against */
+                        // Handle vote against
                       }}
                     />
                   </HStack>
@@ -260,49 +226,6 @@ const PTable: React.FC = () => {
               </Tr>
             ))}
           </Tbody>
-          <Tbody>
-            {proposalData.map((item, index) => (
-              <Tr key={index}>
-                <Td>
-                  {item.proposal}
-                  <GoArrowUpRight />
-                </Td>
-                <Td>
-                  {item.status === "Completed" ? (
-                    <Button colorScheme="blue">Ongoing</Button>
-                  ) : (
-                    <Button colorScheme="red">Completed</Button>
-                  )}
-                </Td>
-                <Td isNumeric>{item.timeLeft}</Td>
-                <Td isNumeric>{item.totalVotes}</Td>
-                <Td isNumeric>{item.votesFor}</Td>
-                <Td isNumeric>{item.votesAgainst}</Td>
-                <Td isNumeric>
-                  <HStack spacing={2}>
-                    <LuThumbsUp
-                      style={{ marginRight: "10px" }}
-                      onClick={() => {
-                        /* Increase votes for */
-                      }}
-                    />
-                    <LuThumbsDown
-                      onClick={() => {
-                        /* Increase votes against */
-                      }}
-                    />
-                  </HStack>
-                </Td>
-              </Tr>
-            ))}
-          </Tbody>
-          {/* <Tfoot>
-          <Tr>
-            <Th>To convert</Th>
-            <Th>into</Th>
-            <Th isNumeric>multiply by</Th>
-          </Tr>
-        </Tfoot> */}
         </Table>
       </TableContainer>
     </>
