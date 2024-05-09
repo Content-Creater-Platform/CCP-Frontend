@@ -24,12 +24,11 @@ const getContentType = (fileExtension: any) => {
   }
 };
 
-const useCreateContent = (
+const useCreateFreeContent = (
   title: string,
   ipfsHash: string,
   fileExtension: string,
   username: string,
-  isMonetised: boolean,
   creatorImage: string
 ) => {
   const { chainId } = useWeb3ModalAccount();
@@ -50,12 +49,11 @@ const useCreateContent = (
         console.error("Unknown file extension");
         return null;
       }
-      const transaction = await contract.createContent(
+      const transaction = await contract.createFreeContent(
         title,
         ipfsHash,
         contentType,
         username,
-        isMonetised,
         creatorImage
       );
       console.log("transaction: ", transaction);
@@ -72,9 +70,8 @@ const useCreateContent = (
     title,
     ipfsHash,
     username,
-    isMonetised,
     creatorImage,
   ]);
 };
 
-export default useCreateContent;
+export default useCreateFreeContent;

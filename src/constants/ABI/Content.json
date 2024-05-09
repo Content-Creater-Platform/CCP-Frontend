@@ -28,7 +28,7 @@
       {
         "name": "",
         "type": "address",
-        "internalType": "contract Analytics"
+        "internalType": "contract IAnalytics"
       }
     ],
     "stateMutability": "view"
@@ -41,85 +41,14 @@
       {
         "name": "",
         "type": "address",
-        "internalType": "contract Authorization"
+        "internalType": "contract IAuthorization"
       }
     ],
     "stateMutability": "view"
   },
   {
     "type": "function",
-    "name": "calculateDecayFactor",
-    "inputs": [
-      {
-        "name": "creationTime",
-        "type": "uint256",
-        "internalType": "uint256"
-      }
-    ],
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256",
-        "internalType": "uint256"
-      }
-    ],
-    "stateMutability": "view"
-  },
-  {
-    "type": "function",
-    "name": "calculateReward",
-    "inputs": [],
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256",
-        "internalType": "uint256"
-      }
-    ],
-    "stateMutability": "view"
-  },
-  {
-    "type": "function",
-    "name": "calculateWeightedScore",
-    "inputs": [
-      {
-        "name": "rating",
-        "type": "uint256",
-        "internalType": "uint256"
-      },
-      {
-        "name": "likes",
-        "type": "uint256",
-        "internalType": "uint256"
-      },
-      {
-        "name": "dislikes",
-        "type": "uint256",
-        "internalType": "uint256"
-      },
-      {
-        "name": "views",
-        "type": "uint256",
-        "internalType": "uint256"
-      },
-      {
-        "name": "shares",
-        "type": "uint256",
-        "internalType": "uint256"
-      }
-    ],
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256",
-        "internalType": "uint256"
-      }
-    ],
-    "stateMutability": "pure"
-  },
-  {
-    "type": "function",
-    "name": "createContent",
+    "name": "createExclusiveContent",
     "inputs": [
       {
         "name": "_title",
@@ -142,9 +71,37 @@
         "internalType": "string"
       },
       {
-        "name": "isMonitized",
-        "type": "bool",
-        "internalType": "bool"
+        "name": "_creatorImage",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "createFreeContent",
+    "inputs": [
+      {
+        "name": "_title",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "_ipfsHash",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "_contentType",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "username",
+        "type": "string",
+        "internalType": "string"
       },
       {
         "name": "_creatorImage",
@@ -157,7 +114,7 @@
   },
   {
     "type": "function",
-    "name": "deleteContent",
+    "name": "deleteExclusiveContent",
     "inputs": [
       {
         "name": "_id",
@@ -170,7 +127,7 @@
   },
   {
     "type": "function",
-    "name": "demonetizeContent",
+    "name": "deleteFreeContent",
     "inputs": [
       {
         "name": "_id",
@@ -183,211 +140,38 @@
   },
   {
     "type": "function",
-    "name": "dislikeContent",
+    "name": "dislikeExclusiveContent",
     "inputs": [
       {
         "name": "_id",
         "type": "uint256",
         "internalType": "uint256"
-      }
-    ],
-    "outputs": [],
-    "stateMutability": "nonpayable"
-  },
-  {
-    "type": "function",
-    "name": "fetch20Content",
-    "inputs": [
-      {
-        "name": "lastId",
-        "type": "uint256",
-        "internalType": "uint256"
-      }
-    ],
-    "outputs": [
-      {
-        "name": "",
-        "type": "tuple[]",
-        "internalType": "struct CCP.ContentItem[]",
-        "components": [
-          {
-            "name": "title",
-            "type": "string",
-            "internalType": "string"
-          },
-          {
-            "name": "id",
-            "type": "uint256",
-            "internalType": "uint256"
-          },
-          {
-            "name": "dateCreated",
-            "type": "uint256",
-            "internalType": "uint256"
-          },
-          {
-            "name": "creatorProfile",
-            "type": "string",
-            "internalType": "string"
-          },
-          {
-            "name": "ipfsHash",
-            "type": "string",
-            "internalType": "string"
-          },
-          {
-            "name": "creator",
-            "type": "address",
-            "internalType": "address"
-          },
-          {
-            "name": "isDeleted",
-            "type": "bool",
-            "internalType": "bool"
-          },
-          {
-            "name": "isMonetized",
-            "type": "bool",
-            "internalType": "bool"
-          },
-          {
-            "name": "views",
-            "type": "uint256",
-            "internalType": "uint256"
-          },
-          {
-            "name": "likes",
-            "type": "uint256",
-            "internalType": "uint256"
-          },
-          {
-            "name": "dislikes",
-            "type": "uint256",
-            "internalType": "uint256"
-          },
-          {
-            "name": "shares",
-            "type": "uint256",
-            "internalType": "uint256"
-          },
-          {
-            "name": "rating",
-            "type": "uint256",
-            "internalType": "uint256"
-          },
-          {
-            "name": "contentType",
-            "type": "string",
-            "internalType": "string"
-          },
-          {
-            "name": "creatorImage",
-            "type": "string",
-            "internalType": "string"
-          }
-        ]
       },
       {
-        "name": "",
-        "type": "uint256",
-        "internalType": "uint256"
+        "name": "_creator",
+        "type": "address",
+        "internalType": "address"
       }
     ],
+    "outputs": [],
     "stateMutability": "nonpayable"
   },
   {
     "type": "function",
-    "name": "fetchAllContent",
-    "inputs": [],
-    "outputs": [
+    "name": "dislikeFreeContent",
+    "inputs": [
       {
-        "name": "",
-        "type": "tuple[]",
-        "internalType": "struct CCP.ContentItem[]",
-        "components": [
-          {
-            "name": "title",
-            "type": "string",
-            "internalType": "string"
-          },
-          {
-            "name": "id",
-            "type": "uint256",
-            "internalType": "uint256"
-          },
-          {
-            "name": "dateCreated",
-            "type": "uint256",
-            "internalType": "uint256"
-          },
-          {
-            "name": "creatorProfile",
-            "type": "string",
-            "internalType": "string"
-          },
-          {
-            "name": "ipfsHash",
-            "type": "string",
-            "internalType": "string"
-          },
-          {
-            "name": "creator",
-            "type": "address",
-            "internalType": "address"
-          },
-          {
-            "name": "isDeleted",
-            "type": "bool",
-            "internalType": "bool"
-          },
-          {
-            "name": "isMonetized",
-            "type": "bool",
-            "internalType": "bool"
-          },
-          {
-            "name": "views",
-            "type": "uint256",
-            "internalType": "uint256"
-          },
-          {
-            "name": "likes",
-            "type": "uint256",
-            "internalType": "uint256"
-          },
-          {
-            "name": "dislikes",
-            "type": "uint256",
-            "internalType": "uint256"
-          },
-          {
-            "name": "shares",
-            "type": "uint256",
-            "internalType": "uint256"
-          },
-          {
-            "name": "rating",
-            "type": "uint256",
-            "internalType": "uint256"
-          },
-          {
-            "name": "contentType",
-            "type": "string",
-            "internalType": "string"
-          },
-          {
-            "name": "creatorImage",
-            "type": "string",
-            "internalType": "string"
-          }
-        ]
+        "name": "_id",
+        "type": "uint256",
+        "internalType": "uint256"
       }
     ],
-    "stateMutability": "view"
+    "outputs": [],
+    "stateMutability": "nonpayable"
   },
   {
     "type": "function",
-    "name": "fetchCreatorContent",
+    "name": "fetchExclusiveContent",
     "inputs": [
       {
         "name": "_creator",
@@ -412,6 +196,11 @@
             "internalType": "uint256"
           },
           {
+            "name": "contentId",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
             "name": "dateCreated",
             "type": "uint256",
             "internalType": "uint256"
@@ -430,16 +219,6 @@
             "name": "creator",
             "type": "address",
             "internalType": "address"
-          },
-          {
-            "name": "isDeleted",
-            "type": "bool",
-            "internalType": "bool"
-          },
-          {
-            "name": "isMonetized",
-            "type": "bool",
-            "internalType": "bool"
           },
           {
             "name": "views",
@@ -479,11 +258,11 @@
         ]
       }
     ],
-    "stateMutability": "view"
+    "stateMutability": "nonpayable"
   },
   {
     "type": "function",
-    "name": "fetchRecent20",
+    "name": "fetchFreeContent",
     "inputs": [],
     "outputs": [
       {
@@ -502,6 +281,11 @@
             "internalType": "uint256"
           },
           {
+            "name": "contentId",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
             "name": "dateCreated",
             "type": "uint256",
             "internalType": "uint256"
@@ -520,16 +304,6 @@
             "name": "creator",
             "type": "address",
             "internalType": "address"
-          },
-          {
-            "name": "isDeleted",
-            "type": "bool",
-            "internalType": "bool"
-          },
-          {
-            "name": "isMonetized",
-            "type": "bool",
-            "internalType": "bool"
           },
           {
             "name": "views",
@@ -573,7 +347,7 @@
   },
   {
     "type": "function",
-    "name": "fetchTendingContent",
+    "name": "fetchMyExclusiveContent",
     "inputs": [],
     "outputs": [
       {
@@ -592,6 +366,11 @@
             "internalType": "uint256"
           },
           {
+            "name": "contentId",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
             "name": "dateCreated",
             "type": "uint256",
             "internalType": "uint256"
@@ -610,16 +389,6 @@
             "name": "creator",
             "type": "address",
             "internalType": "address"
-          },
-          {
-            "name": "isDeleted",
-            "type": "bool",
-            "internalType": "bool"
-          },
-          {
-            "name": "isMonetized",
-            "type": "bool",
-            "internalType": "bool"
           },
           {
             "name": "views",
@@ -659,53 +428,17 @@
         ]
       }
     ],
-    "stateMutability": "view"
+    "stateMutability": "nonpayable"
   },
   {
     "type": "function",
-    "name": "fetchTopCreator",
+    "name": "fetchMyFreeContent",
     "inputs": [],
     "outputs": [
       {
         "name": "",
         "type": "tuple[]",
-        "internalType": "struct CCP.User[]",
-        "components": [
-          {
-            "name": "username",
-            "type": "string",
-            "internalType": "string"
-          },
-          {
-            "name": "walletAddress",
-            "type": "address",
-            "internalType": "address"
-          },
-          {
-            "name": "profileImage",
-            "type": "string",
-            "internalType": "string"
-          }
-        ]
-      }
-    ],
-    "stateMutability": "view"
-  },
-  {
-    "type": "function",
-    "name": "getContent",
-    "inputs": [
-      {
-        "name": "_id",
-        "type": "uint256",
-        "internalType": "uint256"
-      }
-    ],
-    "outputs": [
-      {
-        "name": "",
-        "type": "tuple",
-        "internalType": "struct CCP.ContentItem",
+        "internalType": "struct CCP.ContentItem[]",
         "components": [
           {
             "name": "title",
@@ -718,6 +451,11 @@
             "internalType": "uint256"
           },
           {
+            "name": "contentId",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
             "name": "dateCreated",
             "type": "uint256",
             "internalType": "uint256"
@@ -736,16 +474,6 @@
             "name": "creator",
             "type": "address",
             "internalType": "address"
-          },
-          {
-            "name": "isDeleted",
-            "type": "bool",
-            "internalType": "bool"
-          },
-          {
-            "name": "isMonetized",
-            "type": "bool",
-            "internalType": "bool"
           },
           {
             "name": "views",
@@ -789,33 +517,26 @@
   },
   {
     "type": "function",
-    "name": "likeContent",
+    "name": "getCreatorRating",
     "inputs": [
       {
-        "name": "_id",
+        "name": "_creator",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
         "type": "uint256",
         "internalType": "uint256"
       }
     ],
-    "outputs": [],
-    "stateMutability": "nonpayable"
+    "stateMutability": "view"
   },
   {
     "type": "function",
-    "name": "monetizeContent",
-    "inputs": [
-      {
-        "name": "_id",
-        "type": "uint256",
-        "internalType": "uint256"
-      }
-    ],
-    "outputs": [],
-    "stateMutability": "nonpayable"
-  },
-  {
-    "type": "function",
-    "name": "rateContent",
+    "name": "likeExclusiveContent",
     "inputs": [
       {
         "name": "_id",
@@ -823,7 +544,20 @@
         "internalType": "uint256"
       },
       {
-        "name": "_rating",
+        "name": "_creator",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "likeFreeContent",
+    "inputs": [
+      {
+        "name": "_id",
         "type": "uint256",
         "internalType": "uint256"
       }
@@ -851,10 +585,38 @@
   },
   {
     "type": "function",
-    "name": "shareContent",
+    "name": "rateExclusiveContent",
     "inputs": [
       {
         "name": "_id",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "_creator",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_rating",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "rateFreeContent",
+    "inputs": [
+      {
+        "name": "_id",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "_rating",
         "type": "uint256",
         "internalType": "uint256"
       }
@@ -870,27 +632,39 @@
       {
         "name": "",
         "type": "address",
-        "internalType": "contract Subscription"
+        "internalType": "contract ISubscription"
       }
     ],
     "stateMutability": "view"
   },
   {
-    "type": "function",
-    "name": "viewContent",
+    "type": "event",
+    "name": "CreatorRated",
     "inputs": [
       {
-        "name": "_id",
+        "name": "creator",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "timestamp",
         "type": "uint256",
+        "indexed": true,
+        "internalType": "uint256"
+      },
+      {
+        "name": "rating",
+        "type": "uint256",
+        "indexed": false,
         "internalType": "uint256"
       }
     ],
-    "outputs": [],
-    "stateMutability": "nonpayable"
+    "anonymous": false
   },
   {
     "type": "event",
-    "name": "ContentCreated",
+    "name": "ExclusiveContentCreated",
     "inputs": [
       {
         "name": "id",
@@ -921,29 +695,41 @@
   },
   {
     "type": "event",
-    "name": "ContentDemonetized",
+    "name": "ExclusiveContentDeleted",
     "inputs": [
       {
-        "name": "id",
+        "name": "exclusiveContentID",
         "type": "uint256",
-        "indexed": false,
+        "indexed": true,
         "internalType": "uint256"
       },
       {
         "name": "creator",
         "type": "address",
-        "indexed": false,
+        "indexed": true,
         "internalType": "address"
+      },
+      {
+        "name": "creatorUsername",
+        "type": "string",
+        "indexed": false,
+        "internalType": "string"
+      },
+      {
+        "name": "timestamp",
+        "type": "uint256",
+        "indexed": true,
+        "internalType": "uint256"
       }
     ],
     "anonymous": false
   },
   {
     "type": "event",
-    "name": "ContentDisliked",
+    "name": "ExclusiveContentDisliked",
     "inputs": [
       {
-        "name": "id",
+        "name": "exclusiveContentID",
         "type": "uint256",
         "indexed": true,
         "internalType": "uint256"
@@ -965,10 +751,10 @@
   },
   {
     "type": "event",
-    "name": "ContentLiked",
+    "name": "ExclusiveContentLiked",
     "inputs": [
       {
-        "name": "id",
+        "name": "exclusiveContentID",
         "type": "uint256",
         "indexed": true,
         "internalType": "uint256"
@@ -990,26 +776,7 @@
   },
   {
     "type": "event",
-    "name": "ContentMonetized",
-    "inputs": [
-      {
-        "name": "id",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
-      },
-      {
-        "name": "creator",
-        "type": "address",
-        "indexed": false,
-        "internalType": "address"
-      }
-    ],
-    "anonymous": false
-  },
-  {
-    "type": "event",
-    "name": "ContentRated",
+    "name": "ExclusiveContentRated",
     "inputs": [
       {
         "name": "id",
@@ -1040,7 +807,7 @@
   },
   {
     "type": "event",
-    "name": "ContentShared",
+    "name": "ExclusiveContentViewed",
     "inputs": [
       {
         "name": "id",
@@ -1065,10 +832,72 @@
   },
   {
     "type": "event",
-    "name": "ContentViewed",
+    "name": "FreeContentCreated",
     "inputs": [
       {
         "name": "id",
+        "type": "uint256",
+        "indexed": true,
+        "internalType": "uint256"
+      },
+      {
+        "name": "creator",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "creatorUsername",
+        "type": "string",
+        "indexed": false,
+        "internalType": "string"
+      },
+      {
+        "name": "timestamp",
+        "type": "uint256",
+        "indexed": true,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "FreeContentDeleted",
+    "inputs": [
+      {
+        "name": "freeContentID",
+        "type": "uint256",
+        "indexed": true,
+        "internalType": "uint256"
+      },
+      {
+        "name": "creator",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "creatorUsername",
+        "type": "string",
+        "indexed": false,
+        "internalType": "string"
+      },
+      {
+        "name": "timestamp",
+        "type": "uint256",
+        "indexed": true,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "FreeContentDisliked",
+    "inputs": [
+      {
+        "name": "freeContentID",
         "type": "uint256",
         "indexed": true,
         "internalType": "uint256"
@@ -1090,8 +919,39 @@
   },
   {
     "type": "event",
-    "name": "CreatorRated",
+    "name": "FreeContentLiked",
     "inputs": [
+      {
+        "name": "freeContentID",
+        "type": "uint256",
+        "indexed": true,
+        "internalType": "uint256"
+      },
+      {
+        "name": "creator",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "timestamp",
+        "type": "uint256",
+        "indexed": true,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "FreeContentRated",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint256",
+        "indexed": true,
+        "internalType": "uint256"
+      },
       {
         "name": "creator",
         "type": "address",
@@ -1108,6 +968,31 @@
         "name": "rating",
         "type": "uint256",
         "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "FreeContentViewed",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint256",
+        "indexed": true,
+        "internalType": "uint256"
+      },
+      {
+        "name": "creator",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "timestamp",
+        "type": "uint256",
+        "indexed": true,
         "internalType": "uint256"
       }
     ],

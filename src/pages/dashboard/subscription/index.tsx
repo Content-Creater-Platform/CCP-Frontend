@@ -4,7 +4,6 @@ import SubscriptionComponent from "./components/SubscriptionComponent";
 const Subscription = () => {
   return (
     <DashboardLayout>
-      {/* <Head /> */}
       <SubscriptionComponent />
     </DashboardLayout>
   );

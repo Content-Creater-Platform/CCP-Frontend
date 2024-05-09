@@ -17,6 +17,7 @@ interface ContentItem {
   shares: number;
   rating: number;
   contentType: string;
+  creatorImage: string;
 }
 
 interface State {
@@ -25,7 +26,7 @@ interface State {
   error?: string;
 }
 
-const useGetContent = (): State => {
+const useFetchFreeContent = (): State => {
   // const [lastId, setLastId] = useState(0);
   const [content, setContent] = useState<State>({
     loading: true,
@@ -37,7 +38,7 @@ const useGetContent = (): State => {
     const fetchContent = async () => {
       try {
         const contract = getContentContract(readOnlyProvider);
-        const contentItems = await contract.fetchAllContent(); // Assuming this returns an array of ContentItem
+        const contentItems = await contract.fetchFreeContent(); // Assuming this returns an array of ContentItem
         setContent({
           loading: false,
           data: contentItems.map((item: any) => ({
@@ -55,6 +56,7 @@ const useGetContent = (): State => {
             shares: item.shares,
             rating: item.rating,
             contentType: item.contentType,
+            creatorImage: item.creatorImage,
           })),
           error: undefined,
         });
@@ -73,4 +75,4 @@ const useGetContent = (): State => {
   return content;
 };
 
-export default useGetContent;
+export default useFetchFreeContent;
